@@ -1,0 +1,77 @@
+<p style="color: green"><%= notice %></p>
+<h1>Students</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Subject</th>
+      <th>Marks</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.subject %></td>
+        <td><%= student.marks %></td>
+        <td><%= link_to 'Show', student %></td>
+        <td><%= link_to 'Edit', edit_student_path(student) %></td>
+        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%#= link_to 'New Student', new_student_path %>
+<%= link_to 'Add New Student', '#', id: 'openModal' %>
+
+
+<!-- app/views/students/index.html.erb -->
+<div id="addStudentModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <%= form_with(model: Student.new, local: true) do |form| %>
+      <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </div>
+      <div>
+        <%= form.label :subject %>
+        <%= form.text_field :subject %>
+      </div>
+      <div>
+        <%= form.label :marks %>
+        <%= form.number_field :marks %>
+      </div>
+      <div>
+        <%= form.submit "Add Student" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('addStudentModal');
+    const openModal = document.getElementById('openModal');
+    const closeModal = document.querySelector('.close');
+
+    openModal.onclick = function() {
+      modal.style.display = 'block';
+    }
+
+    closeModal.onclick = function() {
+      modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  });
+</script>
+
