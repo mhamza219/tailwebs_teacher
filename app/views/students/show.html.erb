@@ -1,10 +1,44 @@
-<p style="color: green"><%= notice %></p>
+<h1>Student Details</h1>
 
-<%= render @student %>
+<table>
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Name</strong></td>
+      <td><%= @student.name %></td>
+    </tr>
+    <tr>
+      <td><strong>Subject</strong></td>
+      <td><%= @student.subject %></td>
+    </tr>
+    <tr>
+      <td><strong>Marks</strong></td>
+      <td><%= @student.marks %></td>
+    </tr>
+  </tbody>
+</table>
 
-<div>
-  <%= link_to "Edit this student", edit_student_path(@student) %> |
-  <%= link_to "Back to students", students_path %>
+<%= link_to 'Edit', edit_student_path(@student), class: 'button' %>
+<%= link_to 'Back', students_path, class: 'button' %>
 
-  <%= button_to "Destroy this student", @student, method: :delete %>
-</div>
+<style>
+
+  .button {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .button:hover {
+    background-color: #45a049;
+  }
+</style>
