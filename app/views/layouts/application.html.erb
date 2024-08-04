@@ -11,6 +11,15 @@
   </head>
 
   <body>
+    <nav>
+      <% if user_signed_in? %>
+        <span>Logged in with, <%= current_user.email %>!</span> </br>
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Login', new_user_session_path %> |
+        <%= link_to 'Sign up', new_user_registration_path %>
+      <% end %>
+    </nav>
     <p class="notice",style="color: green"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>

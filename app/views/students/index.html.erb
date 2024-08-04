@@ -1,5 +1,5 @@
 <p style="color: green"><%= notice %></p>
-<h1>Students</h1>
+<h1>Students</h1><%= link_to 'Add New Student', '#', id: 'openModal',  class: 'create-button' %>
 <table>
   <thead>
     <tr>
@@ -18,20 +18,22 @@
         <td><%= student.marks %></td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %></td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <%#= link_to 'New Student', new_student_path %>
-<%= link_to 'Add New Student', '#', id: 'openModal' %>
+<%#= link_to 'Add New Student', '#', id: 'openModal' %>
 
 
 <!-- app/views/students/index.html.erb -->
-<div id="addStudentModal" class="modal" style="display: none;">
+<div id="addStudentModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
+    <h2>Add New Student</h2>
     <%= form_with(model: Student.new, local: true) do |form| %>
       <div>
         <%= form.label :name %>
@@ -46,7 +48,7 @@
         <%= form.number_field :marks %>
       </div>
       <div>
-        <%= form.submit "Add Student" %>
+        <%= form.submit "Add Student", class: 'submit-btn' %>
       </div>
     <% end %>
   </div>
