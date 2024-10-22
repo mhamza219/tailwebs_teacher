@@ -9,17 +9,47 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body>
-    <nav>
+  <div class="container-flouid">
+    <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+      <h3>Tailwebs  Teacher</h3>
+      </a>
       <% if user_signed_in? %>
         <span>Logged in with, <%= current_user.email %>!</span> </br>
-        <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
+        <%= button_to 'Logout', destroy_user_session_path, class: 'btn btn-danger mr-2', method: :delete %>
       <% else %>
-        <%= link_to 'Login', new_user_session_path %> |
+        <%= link_to 'Login', new_user_session_path, class: 'btn btn-outline-primary mr-2' %> |
         <%= link_to 'Sign up', new_user_registration_path %>
       <% end %>
+
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/articles"></a>
+        </li>
+
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/articles/new"></a>
+        </li>
+  
+  
+      </ul>
+     <%#  <form class="">
+        <a class="btn btn-outline-primary mr-2" href="#">Login</a>
+        <a class="btn btn-outline-success" href="#">Become member</a>
+      </form> %>
+  
+      </div>
+    </div>
     </nav>
+  </div>
+
+  <body>
     <p class="notice",style="color: green"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
