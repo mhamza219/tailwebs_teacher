@@ -1,5 +1,5 @@
 <p style="color: green"><%= notice %></p>
-<h1>Students</h1><%= link_to 'Add New Student', '#', id: 'openModal',  class: 'create-button' %>
+<h1>Students</h1><%= link_to 'Add New Student', '#', id: 'openModal',  class: 'btn btn-primary' %>
 <table>
   <thead>
     <tr>
@@ -13,12 +13,13 @@
   <tbody>
     <% @students.each do |student| %>
       <tr>
-        <td><%= student.name %></td>
+
+        <td><span class="avatar rounded-4 text-bg-info" style="display: inline-block; width: 50px; height: 50px; font-size: 24px; line-height: 50px; text-align: center;"><%= student.name[0]%></span> &nbsp<%= student.name %></td>
         <td><%= student.subject %></td>
         <td><%= student.marks %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= button_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %></td>
+        <td style="text-align: center;"><%= link_to 'Show', student, class: 'btn btn-outline-success'  %></td>
+        <td style="text-align: center;"><%= link_to 'Edit', edit_student_path(student), class: 'btn btn-outline-success' %></td>
+        <td style="text-align: center;"><%= button_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %></td>
 
       </tr>
     <% end %>
@@ -37,15 +38,16 @@
     <%= form_with(model: Student.new, local: true) do |form| %>
       <div>
         <%= form.label :name %>
-        <%= form.text_field :name %>
+        <%= form.text_field :name, class: 'form-control' %>
       </div>
+
       <div>
         <%= form.label :subject %>
-        <%= form.text_field :subject %>
+        <%= form.text_field :subject, class: 'form-control'  %>
       </div>
       <div>
         <%= form.label :marks %>
-        <%= form.number_field :marks %>
+        <%= form.number_field :marks, class: 'form-control'  %>
       </div>
       <div>
         <%= form.submit "Add Student", class: 'submit-btn' %>
@@ -53,6 +55,8 @@
     <% end %>
   </div>
 </div>
+
+
 
 
 <script>

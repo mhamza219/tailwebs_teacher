@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
 
 table {
   width: 100%;
@@ -75,7 +76,7 @@ nav span {
   }
 
   .modal-content {
-    background-color: lightblue;
+    background-color: #e6e6ed;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
